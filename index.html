@@ -6,27 +6,40 @@
     <title>Document</title>
 
     <!-- Using Bootstrap for basic Styling-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <style>
+     body{
+      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    }
+     
+     
+      .table tbody tr:last-of-type {
+        background-color: #deebdf;
+        color: #2c2c2c;
+        font-weight: bold;
+        font-size: 1.2em
+      }
+   </style> 
 
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container my-5">
+      
         <div class="row">      
-          <div class="col-md-7 mb-4 mb-md-0">      
+          <div class="col-md-6 offset-md-3  mb-4 mb-md-0 card shadow bg-white rounded  p-5">      
             <div class="text-center mb-4">             
-              <p>The data in the table below was imported from Google Spreadsheet. Thanks to this, they can be edited by editing this sheet, and the changes will be reflected in the html table.</p>      
+              <h5>The data in the table below updates itself in realtime. It is imported using the googlefinance() function that runs inside a Google Spreadsheet and fetches data from the source.<br><br> Thanks to this, the data can also be edited by editing the sheet, and the changes will be reflected in this table.</h5>      
+              <a class="btn btn-warning my-4" target="_blank" href="https://docs.google.com/spreadsheets/d/1P87qnqjIC7_kXSi7bp7tYSP3UxIPZz_9eyvmLtXUkRk/edit#gid=0" role="button"
+                 >Click to see the source sheet</a>
             </div>
       
             <!-- Table -->
-            <table class="table table-striped">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Symbol</th>
                   <th>Price </th>
-                  <th>Percentage Change</th>
+                  <th>Percent Change</th>
                 </tr>
               </thead>
               <tbody id="displayResult"></tbody>
@@ -34,13 +47,7 @@
       
           </div>
       
-          <div class="col-md-5 mb-4 mb-md-0 text-center">
-      
-            <a class="btn btn-warning mb-4" target="_blank" href="https://docs.google.com/spreadsheets/d/1P87qnqjIC7_kXSi7bp7tYSP3UxIPZz_9eyvmLtXUkRk/edit#gid=0" role="button"
-                 >Click to see the source sheet</a
-                >
-      
-          </div>
+        
       
         </div>
 
@@ -48,39 +55,5 @@
       
       </div> 
 </body>
-<script>
-  let xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-  if (this.readyState == 4 && this.status == 200) {
-    let data = JSON.parse(this.responseText).feed.entry;
-    
-    let i;
-    for (i = 0; i < data.length; i++) {
-      let symbol = data[i]["gsx$symbol"]["$t"];
-      let price = data[i]["gsx$price"]["$t"];
-      let percentageChange = data[i]["gsx$percentagechange"]["$t"];
-
-      document.getElementById("displayResult").innerHTML +=
-        "<tr>" +
-        "<td>" +
-        symbol +
-        "</td>" +
-        "<td>" +
-        price +
-        "</td>" +
-        "<td>" +
-        percentageChange +
-        "</td>" +
-        "</tr>";
-    }
-  }
-};
-
-xmlhttp.open(
-  "GET",
-  "https://spreadsheets.google.com/feeds/list/1P87qnqjIC7_kXSi7bp7tYSP3UxIPZz_9eyvmLtXUkRk/od6/public/values?alt=json",
-  true
-);
-xmlhttp.send();
-</script>
+<script src="script.js"></script>
 </html>
