@@ -1,3 +1,5 @@
+    
+//Function to fetch 
     async function getFinanceData() {
         let url = 'https://spreadsheets.google.com/feeds/list/1P87qnqjIC7_kXSi7bp7tYSP3UxIPZz_9eyvmLtXUkRk/od6/public/values?alt=json';
         try {
@@ -6,9 +8,11 @@
         } catch (error) {
             console.log(error);
         }
-    }
-
+    }   
+//Function to Render data after fetch is resolved
     async function renderData() {
+    	"use strict";   
+
         let mydata = await getFinanceData();
         console.log(mydata);
         document.getElementById("displayResult").innerHTML  = "";
@@ -22,9 +26,7 @@
                                 <td class="${textColor} text-right pr-5" >${dt.gsx$percentagechange.$t}  </td>
                                 `;
         
-    });
-
-
+        });
     }
 
     renderData();
@@ -33,7 +35,7 @@
 
 
 
- /* let myfunction = function(){
+	/* let myfunction = function(){
     console.log("hello");
     document.getElementById("displayResult").innerHTML ="";
       let xmlhttp = new XMLHttpRequest();
@@ -74,4 +76,4 @@
     xmlhttp.send();
   }
   myfunction();
-  setInterval(myfunction, 30000); */
+  setInterval(myfunction, 30000);  */

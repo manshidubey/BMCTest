@@ -6,11 +6,11 @@
     <title>Document</title>
 
     <!-- Using Bootstrap for basic Styling-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> <!--   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
    <style>
-     body{
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    }
+      body{
+        background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+      }
      
      
       .table tbody tr:last-of-type {
@@ -26,7 +26,7 @@
     <div class="container my-5">
       
         <div class="row">      
-          <div class="col-md-6 offset-md-3  mb-4 mb-md-0 card shadow bg-white rounded  p-5">      
+          <div class="col-xl-6 offset-xl-3 col mb-4 mb-md-0 card shadow bg-white rounded  p-5">      
             <div class="text-center mb-4">             
               <h5>The data in the table below updates itself in realtime. It is imported using the googlefinance() function that runs inside a Google Spreadsheet and fetches data from the source.<br><br> Thanks to this, the data can also be edited by editing the sheet, and the changes will be reflected in this table.</h5>      
               <a class="btn btn-warning my-4" target="_blank" href="https://docs.google.com/spreadsheets/d/1P87qnqjIC7_kXSi7bp7tYSP3UxIPZz_9eyvmLtXUkRk/edit#gid=0" role="button"
@@ -39,20 +39,14 @@
                 <tr>
                   <th>Symbol</th>
                   <th>Price </th>
-                  <th>Percent Change</th>
+                  <th class="text-right ">Percent Change</th>
                 </tr>
               </thead>
               <tbody id="displayResult"></tbody>
             </table>
       
           </div>
-      
-        
-      
         </div>
-
-      
-      
       </div> 
 </body>
 <script src="script.js"></script>
